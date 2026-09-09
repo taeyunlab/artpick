@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARTPICK 서비스 발표 자료 (Pitch Deck)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Serif+KR:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      background-color: #0f1115;
+      color: #181816;
+      margin: 0;
+      overflow: hidden;
+    }
+    .font-serif-kr { font-family: 'Noto Serif KR', Georgia, serif; }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .slide {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      box-sizing: border-box;
+      padding: 3rem 5rem;
+      background-color: #f7f6f2;
+      position: relative;
+    }
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media print {
+      body { overflow: visible; }
+      .slide { display: flex !important; page-break-after: always; height: 100vh; }
+      .nav-bar { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== SLIDE 1 ==================== -->
+  <div class="slide active" id="slide-1">
+    <div class="flex items-center justify-between">
+      <span class="inline-block px-3 py-1 bg-[#1a56db]/10 text-[#1a56db] text-xs font-bold rounded-full uppercase tracking-wider">
+        ART CURATION PLATFORM
+      </span>
+      <span class="font-cinzel text-xs tracking-widest text-black/40">2026.09 LAUNCH</span>
+    </div>
+
+    <div class="my-auto max-w-4xl">
+      <h1 class="font-cinzel text-6xl font-bold tracking-wider text-[#181816]">ARTPICK</h1>
+      <h2 class="font-serif-kr text-4xl font-bold text-[#1a56db] mt-4 leading-tight">
+        당신의 취향이 작품을 만나는 곳
+      </h2>
+      <p class="text-lg text-black/60 mt-4 leading-relaxed font-normal">
+        새로운 작가와 작품을 발견하고, 소장하는 즐거움을 시작하는 차세대 미술 큐레이션 플랫폼
+      </p>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTISTS · ARTWORKS · COMMUNITY · A BRIGHTER TOMORROW</span>
+      <span>01 / 08</span>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 2 ==================== -->
+  <div class="slide" id="slide-2">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-[#1a56db]">Background & Problem</span>
+      <h2 class="font-serif-kr text-3xl font-bold text-[#181816] mt-1">기존 미술 시장의 한계와 ARTPICK의 출발점</h2>
+      <p class="text-sm text-black/60 mt-1">누구나 미술을 쉽게 발견하고 소장할 수 있도록 문턱을 낮춥니다.</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6 my-auto">
+      <div class="bg-white p-7 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">01. 높은 진입 장벽</span>
+        <h3 class="font-serif-kr text-xl font-bold text-[#181816] mt-2">정보 비대칭성과 폐쇄적 시장</h3>
+        <p class="text-xs text-black/60 mt-3 leading-relaxed">
+          갤러리와 옥션 중심의 유통 구조로 인해 가격이 불투명하고 초보 컬렉터의 진입 장벽이 높았습니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-7 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">02. 노출 기회 부족</span>
+        <h3 class="font-serif-kr text-xl font-bold text-[#181816] mt-2">신진 아티스트의 고립</h3>
+        <p class="text-xs text-black/60 mt-3 leading-relaxed">
+          매년 수천 명의 유망 작가가 배출되지만, 오프라인 갤러리 전시 기회는 극소수에게만 주어졌습니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-7 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">03. 파편화된 탐색</span>
+        <h3 class="font-serif-kr text-xl font-bold text-[#181816] mt-2">개인 맞춤형 큐레이션 부재</h3>
+        <p class="text-xs text-black/60 mt-3 leading-relaxed">
+          방대한 미술 작품 속에서 자신의 취향, 인테리어 분위기에 어울리는 원화를 직관적으로 찾기 어려웠습니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTPICK Presentation</span>
+      <span>02 / 08</span>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 3 ==================== -->
+  <div class="slide" id="slide-3">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-[#1a56db]">Brand Identity</span>
+      <h2 class="font-serif-kr text-3xl font-bold text-[#181816] mt-1">ARTPICK 철학: 예술이 사람을 더 가깝게 만듭니다</h2>
+      <p class="text-sm text-black/60 mt-1">공간을 바꾸는 작은 선택이 예술 생태계의 내일을 만듭니다.</p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 my-auto">
+      <div class="bg-[#181816] p-8 rounded-3xl text-white flex flex-col justify-between shadow-lg">
+        <span class="text-xs font-bold text-[#60a5fa] uppercase tracking-widest">Core Philosophy</span>
+        <div class="my-6">
+          <h3 class="font-serif-kr text-2xl font-bold leading-relaxed">
+            “예술을 고르는 당신이,<br>새로운 이야기를 만듭니다.”
+          </h3>
+          <p class="text-xs text-white/70 mt-4 leading-relaxed font-light">
+            Good Art Brings People Together.<br>
+            원화를 소장하는 특별한 설렘과 작가의 진정성 있는 스토리를 온전히 연결합니다.
+          </p>
+        </div>
+        <span class="text-xs text-white/40 font-cinzel">ART CHANGES TOMORROW</span>
+      </div>
+
+      <div class="flex flex-col gap-3 justify-center">
+        <div class="bg-white p-4 rounded-xl border border-black/5 shadow-sm">
+          <b class="text-xs font-bold text-[#1a56db]">ARTISTS</b>
+          <p class="text-xs text-black/70 mt-0.5">창작에만 몰입할 수 있는 투명한 유통 생태계 제공</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-black/5 shadow-sm">
+          <b class="text-xs font-bold text-[#1a56db]">ARTWORKS</b>
+          <p class="text-xs text-black/70 mt-0.5">회화·사진·일러스트·조각을 아우르는 엄선된 컬렉션</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-black/5 shadow-sm">
+          <b class="text-xs font-bold text-[#1a56db]">COMMUNITY</b>
+          <p class="text-xs text-black/70 mt-0.5">작가와 컬렉터가 소통하고 전시를 함께하는 커뮤니티</p>
+        </div>
+        <div class="bg-white p-4 rounded-xl border border-black/5 shadow-sm">
+          <b class="text-xs font-bold text-[#1a56db]">A BRIGHTER TOMORROW</b>
+          <p class="text-xs text-black/70 mt-0.5">작은 소장이 모여 예술의 내일을 밝히는 선순환</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTPICK Presentation</span>
+      <span>03 / 08</span>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 4 ==================== -->
+  <div class="slide" id="slide-4">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-[#1a56db]">Web Experience</span>
+      <h2 class="font-serif-kr text-3xl font-bold text-[#181816] mt-1">데스크톱 웹: 미술관 도록 수준의 우아한 큐레이션</h2>
+      <p class="text-sm text-black/60 mt-1">고해상도 비주얼 중심 UI와 직관적인 카테고리 인터랙션을 제공합니다.</p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-6 my-auto">
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">01. 히어로 갤러리 & 실시간 지표</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">1,200+ 작가 · 8,500+ 작품 · 12,000+ 유저</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          대형 블루 추상화 중심의 갤러리 감성 레이아웃과 실시간 플랫폼 성장 지표를 통해 신뢰도를 확보합니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">02. 주목할 만한 작품 피드</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">회화 · 사진 · 일러스트 · 조각 필터링</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          원클릭 카테고리 필터와 비대칭 그리드를 통해 작품의 개성을 살리고, 원터치 하트(좋아요) 저장이 가능합니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">03. 작품 상세 및 소장 문의</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">투명한 규격 · 기법 · 보증서 안내</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          호수, 크기, 재료, 제작연도, 친필 서명 진품 보증서를 투명하게 안내하며 원클릭 소장 상담을 지원합니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">04. 실시간 작품 등록 스튜디오</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">신진 창작자를 위한 쉬운 온보딩</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          작품명, 가격, 규격, 이미지 선택, 작가 노트를 손쉽게 입력하여 즉시 컬렉터에게 공개할 수 있습니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTPICK Presentation</span>
+      <span>04 / 08</span>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 5 ==================== -->
+  <div class="slide" id="slide-5">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-[#1a56db]">Mobile Experience</span>
+      <h2 class="font-serif-kr text-3xl font-bold text-[#181816] mt-1">모바일 앱: 손안에서 만나는 피드 & 작가 허브</h2>
+      <p class="text-sm text-black/60 mt-1">일상 속에서 가볍게 작품을 탐색하고 선호하는 작가를 팔로우합니다.</p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 my-auto">
+      <div class="bg-white p-7 rounded-3xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">화면 1: 모바일 홈 피드 탐색</span>
+        <h3 class="font-serif-kr text-lg font-bold text-[#181816] mt-2">간결하고 빠른 모바일 아트 브라우징</h3>
+        <ul class="mt-4 space-y-2 text-xs text-black/70">
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>통합 퀵 검색창: 작품, 작가, 키워드 실시간 서치</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>카테고리 필터: 전체, 회화, 사진, 일러스트, 조각</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>2열 비주얼 카드 피드 및 찜(좋아요) 토글</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>하단 5탭 바: [홈, 탐색, 등록, 좋아요, 마이]</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-7 rounded-3xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">화면 2: 작가 프로필 허브 (김서영 작가)</span>
+        <h3 class="font-serif-kr text-lg font-bold text-[#181816] mt-2">아티스트의 세계관과 포트폴리오를 한눈에</h3>
+        <ul class="mt-4 space-y-2 text-xs text-black/70">
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>원형 프로필, 배너 커버, 핸들(@seoyoung_kim)</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>팬덤 팔로우 시스템: 원클릭 팔로우 토글 및 카운트</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>활동 지표: 1.2만 팔로워 · 24 작품 · 3 전시</li>
+          <li class="flex items-center gap-2"><span class="size-1.5 rounded-full bg-[#1a56db]"></span>4대 탭: [작품(3x3 그리드), 소개, 전시, 소식]</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTPICK Presentation</span>
+      <span>05 / 08</span>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 6 ==================== -->
+  <div class="slide" id="slide-6">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-[#1a56db]">Curated Lineup</span>
+      <h2 class="font-serif-kr text-3xl font-bold text-[#181816] mt-1">다양한 장르를 아우르는 ARTPICK 대표 라인업</h2>
+      <p class="text-sm text-black/60 mt-1">회화부터 사진, 조각, 일러스트까지 검증된 아티스트들이 함께합니다.</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-5 my-auto">
+      <div class="bg-white p-5 rounded-xl border border-black/5 shadow-sm">
+        <span class="text-xs text-black/40">김서영 작가</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816]">푸른 하루</h4>
+        <div class="text-sm font-bold text-[#1a56db] mt-1">₩1,200,000</div>
+        <p class="text-[11px] text-black/50 mt-1">회화 / 수국 유화 30호</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-black/5 shadow-sm">
+        <span class="text-xs text-black/40">이준호 작가</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816]">저녁의 바다</h4>
+        <div class="text-sm font-bold text-[#1a56db] mt-1">₩800,000</div>
+        <p class="text-[11px] text-black/50 mt-1">사진 / 아날로그 필름 프린트</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-black/5 shadow-sm">
+        <span class="text-xs text-black/40">정민지 작가</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816]">그리고, 또 하루</h4>
+        <div class="text-sm font-bold text-[#1a56db] mt-1">₩950,000</div>
+        <p class="text-[11px] text-black/50 mt-1">일러스트 / 비비드 팝 아트</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-black/5 shadow-sm">
+        <span class="text-xs text-black/40">박도현 작가</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816]">흐르는 형태</h4>
+        <div class="text-sm font-bold text-[#1a56db] mt-1">₩2,500,000</div>
+        <p class="text-[11px] text-black/50 mt-1">조각 / 백자토 미니멀 오브제</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-black/5 shadow-sm">
+        <span class="text-xs text-black/40">최은비 작가</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816]">골목의 시간</h4>
+        <div class="text-sm font-bold text-[#1a56db] mt-1">₩700,000</div>
+        <p class="text-[11px] text-black/50 mt-1">사진 / 서촌 흑백 다큐멘터리</p>
+      </div>
+
+      <div class="bg-white p-5 rounded-xl border border-black/5 shadow-sm">
+        <span class="text-xs text-black/40">한지호 작가</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816]">여름의 결</h4>
+        <div class="text-sm font-bold text-[#1a56db] mt-1">₩1,600,000</div>
+        <p class="text-[11px] text-black/50 mt-1">회화 / 산자락 대형 유화 50호</p>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTPICK Presentation</span>
+      <span>06 / 08</span>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 7 ==================== -->
+  <div class="slide" id="slide-7">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-[#1a56db]">Business Model</span>
+      <h2 class="font-serif-kr text-3xl font-bold text-[#181816] mt-1">지속 가능한 아트 생태계와 수익 모델</h2>
+      <p class="text-sm text-black/60 mt-1">작가와 플랫폼, 컬렉터가 함께 성장하는 상생 구조를 지향합니다.</p>
+    </div>
+
+    <div class="grid grid-cols-2 gap-6 my-auto">
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">01. 원화 거래 중개 수수료</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">15~20%의 합리적인 수수료</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          기존 오프라인 갤러리(40~50%) 대비 획기적으로 낮춘 작가 친화적 수수료로 독점적인 신작을 유치합니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">02. 한정판 에디션 & 아트 굿즈</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">프린트 및 굿즈 커머스</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          원화 소장이 부담스러운 입문자를 위한 리미티드 판화, 포스터, 아트북 콜라보레이션 상품을 기획합니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">03. B2B 공간 아트 렌탈</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">오피스 · 호텔 맞춤 정기 구독</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          기업 사옥, 카페, 호텔 라운지에 시즌별로 원화를 교체 전시해 주는 B2B 공간 아트 솔루션을 제공합니다.
+        </p>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">04. 에디토리얼 브랜디드 콘텐츠</span>
+        <h4 class="text-sm font-bold text-[#181816] mt-1">매거진 & 프리미엄 스폰서십</h4>
+        <p class="text-xs text-black/60 mt-2 leading-relaxed">
+          아티스트 심층 인터뷰와 라이프스타일 가이드를 결합한 고급 브랜디드 콘텐츠 및 전시 프로모션 수익을 창출합니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTPICK Presentation</span>
+      <span>07 / 08</span>
+    </div>
+  </div>
+
+  <!-- ==================== SLIDE 8 ==================== -->
+  <div class="slide" id="slide-8">
+    <div>
+      <span class="text-xs font-bold uppercase tracking-widest text-[#1a56db]">Roadmap & Vision</span>
+      <h2 class="font-serif-kr text-3xl font-bold text-[#181816] mt-1">More Artists, A Brighter Tomorrow</h2>
+      <p class="text-sm text-black/60 mt-1">온·오프라인의 경계를 넘어 국내외 미술 시장의 표준 플랫폼으로 도약합니다.</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6 my-auto">
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">PHASE 1 (현재)</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816] mt-1">플랫폼 런칭 & 생태계 구축</h4>
+        <ul class="mt-3 space-y-1.5 text-xs text-black/60 leading-relaxed">
+          <li>• 데스크톱 웹 & 모바일 피드 오픈</li>
+          <li>• 등록 작가 1,200명 확보</li>
+          <li>• 투명한 소장 문의 프로세스 확립</li>
+          <li>• 작가 프로필 허브 시스템 가동</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">PHASE 2 (2026.4Q)</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816] mt-1">스마트 큐레이션 고도화</h4>
+        <ul class="mt-3 space-y-1.5 text-xs text-black/60 leading-relaxed">
+          <li>• AI 기반 개인 취향 분석 추천</li>
+          <li>• AR 카메라를 통한 벽면 가상 배치</li>
+          <li>• 간편 전자 결제 & 안심 배송 연동</li>
+          <li>• 신진 작가 오프라인 기획전 개최</li>
+        </ul>
+      </div>
+
+      <div class="bg-white p-6 rounded-2xl border border-black/5 shadow-sm">
+        <span class="text-xs font-bold text-[#1a56db]">PHASE 3 (2027.1H)</span>
+        <h4 class="font-serif-kr text-base font-bold text-[#181816] mt-1">글로벌 확장 & 아트페어</h4>
+        <ul class="mt-3 space-y-1.5 text-xs text-black/60 leading-relaxed">
+          <li>• K-아트 글로벌 해외 배송 지원</li>
+          <li>• ARTPICK 온·오프라인 아트페어</li>
+          <li>• 기업 B2B 공간 구독 본격 확대</li>
+          <li>• 국내 최대 아트 커뮤니티 안착</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-[#181816] py-3 px-6 rounded-2xl text-center text-white text-xs font-medium">
+      ARTPICK — 작은 선택이 새로운 예술의 내일을 만듭니다. &nbsp;|&nbsp; 감사합니다.
+    </div>
+
+    <div class="flex items-center justify-between border-t border-black/10 pt-4 text-xs text-black/45">
+      <span>ARTPICK Presentation</span>
+      <span>08 / 08</span>
+    </div>
+  </div>
+
+  <!-- Bottom Navigation Controller -->
+  <div class="nav-bar fixed bottom-5 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md px-5 py-2.5 rounded-full flex items-center gap-4 text-white text-xs z-50 shadow-2xl">
+    <button onclick="prevSlide()" class="hover:text-[#60a5fa] font-bold">◀ 이전</button>
+    <span id="slide-num">1 / 8</span>
+    <button onclick="nextSlide()" class="hover:text-[#60a5fa] font-bold">다음 ▶</button>
+    <span class="text-white/30">|</span>
+    <button onclick="window.print()" class="hover:text-[#60a5fa]">인쇄 / PDF 저장</button>
+  </div>
+
+  <script>
+    let current = 1;
+    const total = 8;
+
+    function showSlide(n) {
+      document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('slide-' + n);
+      if (target) {
+        target.classList.add('active');
+        document.getElementById('slide-num').innerText = n + ' / ' + total;
+      }
+    }
+
+    function nextSlide() {
+      if (current < total) {
+        current++;
+        showSlide(current);
+      }
+    }
+
+    function prevSlide() {
+      if (current > 1) {
+        current--;
+        showSlide(current);
+      }
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') nextSlide();
+      else if (e.key === 'ArrowLeft') prevSlide();
+    });
+  </script>
+</body>
+</html>
