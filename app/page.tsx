@@ -11,10 +11,16 @@ import { Editorial } from '@/components/artpick/editorial';
 import { RegisterModal } from '@/components/artpick/register-modal';
 import { LoginModal } from '@/components/artpick/login-modal';
 import { MobileMockupFrame } from '@/components/artpick/mobile-mockup-frame';
+import { ArtistSpotlight } from '@/components/artpick/artist-spotlight';
+import { CreationStories } from '@/components/artpick/creation-stories';
+import { StoryModal } from '@/components/artpick/story-modal';
+import { FloatingCapsuleNav } from '@/components/artpick/floating-capsule-nav';
 import {
   INITIAL_ARTWORKS,
   ARTISTS_DATA,
   Artwork,
+  CreationStory,
+  CREATION_STORIES,
 } from '@/lib/artpick-data';
 import { Check } from 'lucide-react';
 
@@ -22,9 +28,10 @@ export default function Home() {
   const [currentTab, setCurrentTab] = useState<'home' | 'artworks' | 'artists' | 'magazine'>('home');
   const [artworks, setArtworks] = useState<Artwork[]>(INITIAL_ARTWORKS);
   const [favorites, setFavorites] = useState<number[]>([]);
-  const [followedArtists, setFollowedArtists] = useState<string[]>(['seoyoung_kim']);
+  const [followedArtists, setFollowedArtists] = useState<string[]>(['seoyun_lee', 'seoyoung_kim']);
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [selectedArtistId, setSelectedArtistId] = useState<string | null>(null);
+  const [selectedStory, setSelectedStory] = useState<CreationStory | null>(null);
   const [isDevicePreview, setIsDevicePreview] = useState<boolean>(false);
   const [isRegisterOpen, setIsRegisterOpen] = useState<boolean>(false);
   const [isLoginOpen, setIsLoginOpen] = useState<boolean>(false);
@@ -99,7 +106,7 @@ export default function Home() {
     showToast(`「${artwork.title}」소장 문의가 갤러리 큐레이터에게 접수되었습니다.`);
   };
 
-  // Filter artworks by search query if any
+  // Filter artworks by search query (including title, artist, category, medium)
   const displayedArtworks = useMemo(() => {
     if (!searchQuery.trim()) return artworks;
     const q = searchQuery.toLowerCase();
@@ -107,14 +114,15 @@ export default function Home() {
       (item) =>
         item.title.toLowerCase().includes(q) ||
         item.artist.toLowerCase().includes(q) ||
-        item.category.toLowerCase().includes(q)
+        item.category.toLowerCase().includes(q) ||
+        item.medium.toLowerCase().includes(q)
     );
   }, [artworks, searchQuery]);
 
   const selectedArtist = selectedArtistId ? ARTISTS_DATA[selectedArtistId] : null;
 
   return (
-    <div className="min-h-screen bg-[#f7f6f2] text-[#181816] flex flex-col justify-between">
+    <div className="min-h-screen bg-[#f7f6f2] text-[#181816] flex flex-col justify-between pb-16">
       <div>
         {/* Global Navigation Header */}
         <Header
@@ -133,23 +141,24 @@ export default function Home() {
           savedCount={favorites.length}
         />
 
-        {/* Dual Phone Simulation Mockup Mode (toggleable from header button) */}
+        {/* Dual Phone Simulation Mockup Mode (toggleable from header or floating button) */}
         {isDevicePreview && (
           <MobileMockupFrame
             artworks={artworks}
-            artist={ARTISTS_DATA.seoyoung_kim}
+            artist={ARTISTS_DATA.seoyun_lee || ARTISTS_DATA.seoyoung_kim}
             favorites={favorites}
             onToggleFavorite={handleToggleFavorite}
             onSelectArtwork={(item) => setSelectedArtwork(item)}
-            isFollowed={followedArtists.includes('seoyoung_kim')}
+            isFollowed={followedArtists.includes('seoyun_lee')}
             onToggleFollow={handleToggleFollow}
             onClose={() => setIsDevicePreview(false)}
+            onSelectStory={(story) => setSelectedStory(story)}
           />
         )}
 
         {/* Main Body depending on selected state & tabs */}
         {selectedArtist ? (
-          /* Dedicated Artist Profile View (e.g. 김서영) */
+          /* Dedicated Artist Profile View */
           <ArtistView
             artist={selectedArtist}
             artworks={artworks}
@@ -169,7 +178,7 @@ export default function Home() {
           /* Magazine Tab */
           <Editorial />
         ) : (
-          /* Home & Artworks Feed (Matches the user's mockup image!) */
+          /* Home & Artworks Feed (Matches the user's mockup design) */
           <>
             {/* Desktop Hero Section */}
             {currentTab === 'home' && (
@@ -182,7 +191,22 @@ export default function Home() {
               />
             )}
 
-            {/* Featured Artworks ("주목할 만한 작품") Section */}
+            {/* 1. 이 주의 주목할 신진 작가 (Artist Spotlight Banner) */}
+            {currentTab === 'home' && (
+              <ArtistSpotlight
+                onSelectArtist={(artistId) => setSelectedArtistId(artistId)}
+                onOpenStory={() => setSelectedStory(CREATION_STORIES[0])}
+              />
+            )}
+
+            {/* 2. 📖 창작의 과정 (Story) - 완성된 작품 너머의 작업실 이야기 */}
+            {currentTab === 'home' && (
+              <CreationStories
+                onSelectStory={(story) => setSelectedStory(story)}
+              />
+            )}
+
+            {/* 3. 🎨 실시간 작품 큐레이션 Section */}
             <div id="featured-section">
               <FeaturedArtworks
                 artworks={displayedArtworks}
@@ -191,6 +215,8 @@ export default function Home() {
                 onSelectArtwork={(item) => setSelectedArtwork(item)}
                 onSelectArtist={(artistId) => setSelectedArtistId(artistId)}
                 onViewAllClick={() => setCurrentTab('artworks')}
+                followedArtists={followedArtists}
+                onToggleFollow={handleToggleFollow}
               />
             </div>
 
@@ -200,10 +226,22 @@ export default function Home() {
         )}
       </div>
 
+      {/* Floating Capsule Navigation Bar & FAB (Matches mockup) */}
+      <FloatingCapsuleNav
+        currentTab={currentTab}
+        onSelectTab={(tab) => {
+          setCurrentTab(tab);
+          setSelectedArtistId(null);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onToggleSimulator={() => setIsDevicePreview((prev) => !prev)}
+        isSimulatorActive={isDevicePreview}
+      />
+
       {/* Floating Toast Notification */}
       {toastMessage && (
         <output
-          className="fixed bottom-6 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5 rounded-full bg-[#181816] px-5 py-3 text-xs font-medium text-white shadow-2xl transition-all"
+          className="fixed bottom-20 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2.5 rounded-full bg-[#181816] px-5 py-3 text-xs font-medium text-white shadow-2xl transition-all"
         >
           <div className="grid size-4 place-items-center rounded-full bg-[#1a56db] text-white">
             <Check className="size-3 stroke-[3]" />
@@ -211,6 +249,18 @@ export default function Home() {
           <span>{toastMessage}</span>
         </output>
       )}
+
+      {/* Work-in-Progress Story Modal (창작의 과정 상세 일지 모달) */}
+      <StoryModal
+        story={selectedStory}
+        isOpen={!!selectedStory}
+        onClose={() => setSelectedStory(null)}
+        onViewArtwork={(artworkId) => {
+          const target = artworks.find((a) => a.id === artworkId);
+          if (target) setSelectedArtwork(target);
+        }}
+        onSelectArtist={(artistId) => setSelectedArtistId(artistId)}
+      />
 
       {/* Artwork Detail Modal */}
       <ArtworkModal

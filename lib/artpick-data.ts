@@ -4,7 +4,7 @@ export interface Artwork {
   artist: string;
   artistHandle: string;
   artistId: string;
-  category: '회화' | '사진' | '일러스트' | '조각';
+  category: string;
   price: number;
   formattedPrice: string;
   image: string;
@@ -33,6 +33,25 @@ export interface Artist {
   news: { date: string; title: string; summary: string }[];
 }
 
+export interface CreationStory {
+  id: number;
+  artistId: string;
+  artistName: string;
+  artistRole?: string;
+  stage: string; // 예: '창작 과정 2단계', '소성 및 완성'
+  title: string;
+  summary: string;
+  image: string;
+  date: string;
+  artworkId?: number;
+  fullLog: {
+    duration: string;
+    materials: string[];
+    steps: { step: number; title: string; desc: string; image?: string }[];
+    artistNote: string;
+  };
+}
+
 export interface MagazineArticle {
   id: number;
   title: string;
@@ -43,7 +62,7 @@ export interface MagazineArticle {
   category: string;
 }
 
-export const CATEGORIES = ['전체', '회화', '사진', '일러스트', '조각'] as const;
+export const CATEGORIES: string[] = ['전체', '회화', '공예', '디지털 아트', '조소', '창작 일지'];
 
 export const INITIAL_ARTWORKS: Artwork[] = [
   {
@@ -250,9 +269,103 @@ export const INITIAL_ARTWORKS: Artwork[] = [
     likes: 142,
     description: '오랜 시간 마모된 돌의 기억을 청동의 묵직한 질감과 결합한 소형 조각 연작입니다.',
   },
+  {
+    id: 101,
+    title: '순간의 결 (Momentum)',
+    artist: '이서윤',
+    artistHandle: '@seoyun_lee',
+    artistId: 'seoyun_lee',
+    category: '회화',
+    price: 1850000,
+    formattedPrice: '₩1,850,000',
+    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1000&q=85',
+    aspect: 'aspect-[3/4]',
+    dimensions: '90.9 x 72.7 cm (30호)',
+    medium: 'Oil & Gesso on Linen, 2026',
+    year: '2026',
+    likes: 580,
+    description: '4겹의 젯소 칠과 빛의 굴절을 응축한 레이어링. 삶의 고요한 순간들이 빚어내는 온화한 파동을 전합니다.',
+  },
+  {
+    id: 102,
+    title: '1250도의 빙열 다완',
+    artist: '박민우',
+    artistHandle: '@minwoo_park',
+    artistId: 'minwoo_park',
+    category: '공예',
+    price: 650000,
+    formattedPrice: '₩650,000',
+    image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1000&q=85',
+    aspect: 'aspect-square',
+    dimensions: '14 x 14 x 8.5 cm',
+    medium: '산청백토, 천연재유 환원소성 1250℃, 2026',
+    year: '2026',
+    likes: 312,
+    description: '가마 속 닷새간의 기다림 끝에 얻은 얼음결 같은 미세 빙열 패턴. 손에 쥐었을 때 흙의 온기와 깊이를 느낄 수 있습니다.',
+  },
+  {
+    id: 103,
+    title: '새벽의 잔향',
+    artist: '이서윤',
+    artistHandle: '@seoyun_lee',
+    artistId: 'seoyun_lee',
+    category: '회화',
+    price: 1400000,
+    formattedPrice: '₩1,400,000',
+    image: 'https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1000&q=85',
+    aspect: 'aspect-[4/3]',
+    dimensions: '72.7 x 60.6 cm (20호)',
+    medium: 'Oil on canvas, 2026',
+    year: '2026',
+    likes: 420,
+    description: '빛과 어둠이 교차하는 새벽 5시의 공기를 담은 연작입니다.',
+  },
 ];
 
 export const ARTISTS_DATA: Record<string, Artist> = {
+  seoyun_lee: {
+    id: 'seoyun_lee',
+    name: '이서윤',
+    handle: '@seoyun_lee',
+    category: '신진 서양화가',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=85',
+    coverImage: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=1400&q=85',
+    followers: '1.5만',
+    followersCount: 15200,
+    artworksCount: 14,
+    exhibitionsCount: 2,
+    bio: '빛과 결의 층위를 쌓아 올리며 삶의 고요한 순간을 기록하는 신진 서양화가입니다. 물감과 젯소의 물질적 레이어로 시간의 지속성을 탐구합니다.',
+    quote: '“빛과 결의 층위를 쌓아 올리며 삶의 고요한 순간을 기록합니다.”',
+    exhibitions: [
+      { year: '2026', title: '신진 기획전 《빛과 결의 층위》', location: '아트픽 스페이스 (서울)' },
+      { year: '2025', title: '청년 미술제 《사색의 캔버스》', location: '인사 아트센터' },
+    ],
+    news: [
+      { date: '2026.03.15', title: '이 주의 주목할 신진 작가 선정', summary: '아트픽 큐레이터팀의 스포트라이트 작가로 선정되었습니다.' },
+      { date: '2026.03.01', title: '신작 〈순간의 결〉 창작 일지 공개', summary: '3주간의 밑작업 기록이 창작의 과정 섹션에 게재되었습니다.' },
+    ],
+  },
+  minwoo_park: {
+    id: 'minwoo_park',
+    name: '박민우',
+    handle: '@minwoo_park',
+    category: '도예가',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=85',
+    coverImage: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=1400&q=85',
+    followers: '8.7천',
+    followersCount: 8700,
+    artworksCount: 19,
+    exhibitionsCount: 4,
+    bio: '자연의 흙과 1250도 가마 불이 만들어내는 우연한 빙열의 미학을 탐구합니다.',
+    quote: '“1250도 가마 속 불과 흙의 대화에서 가장 순수한 형태를 찾습니다.”',
+    exhibitions: [
+      { year: '2026', title: '현대 도예 초대전 《빙열의 노래》', location: '통인 갤러리' },
+      { year: '2025', title: '공예 트렌드 페어 창작 공방관', location: 'COEX' },
+    ],
+    news: [
+      { date: '2026.03.12', title: '빙열 다완 시리즈 한정 출품', summary: '가마 소성 닷새 만에 완성된 신작 3점이 공개되었습니다.' },
+    ],
+  },
   seoyoung_kim: {
     id: 'seoyoung_kim',
     name: '김서영',
@@ -415,3 +528,136 @@ export const MAGAZINE_ARTICLES: MagazineArticle[] = [
     category: '스튜디오 탐방',
   },
 ];
+
+export const CREATION_STORIES: CreationStory[] = [
+  {
+    id: 1,
+    artistId: 'seoyun_lee',
+    artistName: '이서윤 작가',
+    artistRole: '신진 서양화가',
+    stage: '창작 과정 2단계',
+    title: '3주간의 밑작업과 첫 번째 붓터치',
+    summary: '젯소 칠을 4번에 걸쳐 완성한 뒤, 물감의 첫 층을 얹는 순간의 기록입니다.',
+    image: 'https://images.unsplash.com/photo-1579783902614-a3fb3927b675?auto=format&fit=crop&w=800&q=85',
+    date: '2026.03.14',
+    artworkId: 101,
+    fullLog: {
+      duration: '3주간의 밑작업',
+      materials: ['벨기에산 천연 린넨 캔버스', '전통 아크릴 젯소 4회 도포', '천연 안료 덜스트', '프랑스산 린시드 오일'],
+      steps: [
+        {
+          step: 1,
+          title: '캔버스 천 스트레칭 및 젯소 하도 작업',
+          desc: '밀도 높은 린넨 천을 직접 짠 뒤, 사포질과 젯소 칠을 4번에 걸쳐 반복하여 붓이 미끄러지지 않는 견고한 표면을 만듭니다.',
+        },
+        {
+          step: 2,
+          title: '첫 번째 유화 층(Underpainting) 조색',
+          desc: '빛의 투과를 위해 번트 엄버와 울트라마린 딥을 묽게 희석하여 첫 번째 구조적 명암을 잡았습니다.',
+        },
+        {
+          step: 3,
+          title: '결의 축적과 텍스처 마티에르',
+          desc: '나이프를 이용해 빛이 부딪히는 각도에 따라 색조가 변하도록 층위를 쌓아갑니다.',
+        },
+      ],
+      artistNote:
+        '물감이 마르기 전까지는 알 수 없는 긴장감이 있습니다. 그러나 4겹의 젯소 위로 첫 물감이 스며드는 그 순간, 캔버스는 비로소 숨을 쉬기 시작합니다.',
+    },
+  },
+  {
+    id: 2,
+    artistId: 'minwoo_park',
+    artistName: '박민우 작가',
+    artistRole: '도예가',
+    stage: '소성 및 완성',
+    title: '1250도 가마 속에서 겪은 두 번의 실패와 깨달음',
+    summary: '원하는 빙열 패턴을 얻기 위해 온도 조절에 몰두했던 닷새간의 기록입니다.',
+    image: 'https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=800&q=85',
+    date: '2026.03.12',
+    artworkId: 102,
+    fullLog: {
+      duration: '5일간의 가마 소성',
+      materials: ['산청 백토', '재유(재를 섞은 천연 유약)', '가스 장작가마 1250℃'],
+      steps: [
+        {
+          step: 1,
+          title: '물레 성형 및 반건조 굽깎기',
+          desc: '손의 온기로 흙의 수분을 느끼며 두께 3mm의 균일한 그릇 벽을 성형합니다.',
+        },
+        {
+          step: 2,
+          title: '초벌구이 850도 및 유약 시유',
+          desc: '자연 소나무 재를 정제해 만든 천연 유약에 3초간 담가 고른 피막을 형성합니다.',
+        },
+        {
+          step: 3,
+          title: '환원 소성 1250도 및 급냉 빙열 생성',
+          desc: '가마 내부 산소를 차단하며 1250도까지 끌어올린 뒤, 미세한 균열음과 함께 빙열이 피어납니다.',
+        },
+      ],
+      artistNote:
+        '두 번이나 가마 안에서 기물이 주저앉았습니다. 온도를 10도 낮추고 뜸 들이는 시간을 40분 늘리자 비로소 맑은 얼음 같은 빙열이 제 모습을 드러냈습니다.',
+    },
+  },
+  {
+    id: 3,
+    artistId: 'minji_jung',
+    artistName: '정민지 작가',
+    artistRole: '일러스트레이터',
+    stage: '채색 및 무드 세팅',
+    title: '도시의 밤, 네온과 고독의 조도를 맞추다',
+    summary: '수십 개의 디지털 레이어를 겹치며 밤의 서늘함과 네온의 온기를 조율하는 작업 일지.',
+    image: 'https://images.unsplash.com/photo-1578925518470-4def7a0f08bb?auto=format&fit=crop&w=800&q=85',
+    date: '2026.03.10',
+    artworkId: 3,
+    fullLog: {
+      duration: '7일간의 그래픽 작업',
+      materials: ['디지털 캔버스', '커스텀 아크릴 브러시', '오버레이 블렌딩 모드'],
+      steps: [
+        {
+          step: 1,
+          title: '러프 스케치와 인물 감정선 포착',
+          desc: '퇴근길 지하철 차창에 비친 지친 그러나 단단한 눈빛을 드로잉합니다.',
+        },
+        {
+          step: 2,
+          title: '색채 대비 설계',
+          desc: '차가운 시안 블루와 따뜻한 네온 오렌지를 배치하여 도심 속 양가적 감정을 시각화합니다.',
+        },
+      ],
+      artistNote:
+        '빛은 어둠이 있을 때 가장 선명합니다. 디지털 작업이지만 한 획 한 획 손의 떨림을 남겨두려 애씁니다.',
+    },
+  },
+  {
+    id: 4,
+    artistId: 'dohyun_park',
+    artistName: '박도현 작가',
+    artistRole: '조각가',
+    stage: '원형 성형 1단계',
+    title: '인위성을 덜어내는 손끝의 감각',
+    summary: '물레를 쓰지 않고 손으로 흙을 비벼 쌓아 올리며 비움의 곡선을 찾아갑니다.',
+    image: 'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=85',
+    date: '2026.03.08',
+    artworkId: 4,
+    fullLog: {
+      duration: '10일간의 코일링 작업',
+      materials: ['분청토', '대나무 칼', '무광 매트 유약'],
+      steps: [
+        {
+          step: 1,
+          title: '코일링(타래쌓기) 기법',
+          desc: '가래떡 모양의 흙을 층층이 올리며 손자국을 그대로 남겨둡니다.',
+        },
+        {
+          step: 2,
+          title: '건조와 비움의 형태 잡기',
+          desc: '바람이 드나들 공간을 칼로 오려내며 덩어리감과 공백의 밸런스를 잡습니다.',
+        },
+      ],
+      artistNote: '흙이 스스로 서려고 하는 힘을 거스르지 않는 것이 제 조각의 전부입니다.',
+    },
+  },
+];
+

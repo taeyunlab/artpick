@@ -32,15 +32,23 @@ export function Header({
   return (
     <header className="sticky top-0 z-40 border-b border-black/[0.07] bg-[#f7f6f2]/92 backdrop-blur-md transition-all">
       <div className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between px-5 md:px-10">
-        {/* Left: Brand Logo & Main Nav */}
-        <div className="flex items-center gap-10">
+        {/* Left: Brand Logo & Slogan & Main Nav */}
+        <div className="flex items-center gap-6 lg:gap-10">
           <button
             onClick={() => onNavigate('home')}
-            className="group flex items-center gap-2.5 text-left focus:outline-none"
+            className="group flex flex-col text-left focus:outline-none"
             aria-label="ARTPICK 홈으로 이동"
           >
-            <span className="font-cinzel text-2xl font-bold tracking-[0.18em] text-[#181816] transition-opacity group-hover:opacity-80">
-              ARTPICK
+            <div className="flex items-center gap-2">
+              <span className="font-cinzel text-xl sm:text-2xl font-bold tracking-[0.14em] text-[#181816] transition-opacity group-hover:opacity-80">
+                ARTPICK
+              </span>
+              <span className="rounded-md bg-[#2563eb] px-1.5 py-0.5 text-[10px] font-bold tracking-wider text-white">
+                BETA
+              </span>
+            </div>
+            <span className="hidden sm:inline-block text-[10px] font-medium text-black/55 tracking-tight">
+              신진 예술가의 발견 · 기록 · 연결 · 판매
             </span>
           </button>
 
@@ -117,22 +125,21 @@ export function Header({
             </span>
           </button>
 
+          {/* Artist Register CTA (Matches black pill button from mockup) */}
+          <Button
+            onClick={onOpenRegister}
+            className="h-8 sm:h-9 rounded-full bg-[#181816] px-3.5 sm:px-4 text-xs font-semibold text-white shadow-sm transition hover:bg-black/80"
+          >
+            작가 등록
+          </Button>
+
           {/* Login Button */}
           <button
             onClick={onOpenLogin}
-            className="hidden text-sm font-medium text-[#181816]/75 transition hover:text-[#181816] sm:inline-block"
+            className="hidden text-xs sm:text-sm font-medium text-[#181816]/75 transition hover:text-[#181816] md:inline-block"
           >
             로그인
           </button>
-
-          {/* Register Artwork Button (Signature royal blue pill button) */}
-          <Button
-            onClick={onOpenRegister}
-            className="h-9 rounded-full bg-[#1a56db] px-4 text-xs font-medium text-white shadow-sm transition hover:bg-[#1545b3] md:h-10 md:px-5 md:text-sm"
-          >
-            <Plus className="mr-1 size-3.5 md:hidden" />
-            작품 등록
-          </Button>
 
           {/* Mobile Hamburger Menu */}
           <button
