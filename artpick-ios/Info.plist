@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>ARTPICK</string>
+    <key>CFBundleDisplayName</key>
+    <string>ARTPICK</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.artpick.app</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>NSCameraUsageDescription</key>
+    <string>작품 등록 및 현장 촬영을 위해 카메라 접근 권한이 필요합니다.</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>작품 이미지 업로드를 위해 사진 라이브러리 접근 권한이 필요합니다.</string>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+</dict>
+</plist>
