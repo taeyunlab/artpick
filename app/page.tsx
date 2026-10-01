@@ -15,6 +15,7 @@ import { ArtistSpotlight } from '@/components/artpick/artist-spotlight';
 import { CreationStories } from '@/components/artpick/creation-stories';
 import { StoryModal } from '@/components/artpick/story-modal';
 import { FloatingCapsuleNav } from '@/components/artpick/floating-capsule-nav';
+import { NativeBridgeBar } from '@/components/artpick/native-bridge-bar';
 import {
   INITIAL_ARTWORKS,
   ARTISTS_DATA,
@@ -124,6 +125,9 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f7f6f2] text-[#181816] flex flex-col justify-between pb-16">
       <div>
+        {/* Native Bridge Test & Status Bar */}
+        <NativeBridgeBar />
+
         {/* Global Navigation Header */}
         <Header
           currentTab={currentTab}
